@@ -1,0 +1,2 @@
+This is a test document that was dropped into the monitored folder.
+The AI Employee should detect this file and create a corresponding action item.

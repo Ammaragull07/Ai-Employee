@@ -1,0 +1,2 @@
+This is a test file to verify that the file system watcher is working correctly.
+The AI Employee should detect this file and create a corresponding action item in the Needs_Action folder.

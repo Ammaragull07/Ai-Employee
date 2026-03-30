@@ -1,0 +1,51 @@
+2026-03-30 15:27:17,630 - INFO - Ensured folder exists: Inbox
+2026-03-30 15:27:17,632 - INFO - Ensured folder exists: Needs_Action
+2026-03-30 15:27:17,633 - INFO - Ensured folder exists: Done
+2026-03-30 15:27:17,634 - INFO - Ensured folder exists: Plans
+2026-03-30 15:27:17,635 - INFO - Ensured folder exists: Pending_Approval
+2026-03-30 15:27:17,636 - INFO - Ensured folder exists: Logs
+2026-03-30 15:27:17,636 - INFO - Starting processing cycle
+2026-03-30 15:27:17,638 - INFO - Found 0 files in Needs_Action
+2026-03-30 15:27:17,638 - INFO - Completed processing cycle
+2026-03-30 15:47:17,016 - INFO - Ensured folder exists: Inbox
+2026-03-30 15:47:17,025 - INFO - Ensured folder exists: Needs_Action
+2026-03-30 15:47:17,026 - INFO - Ensured folder exists: Done
+2026-03-30 15:47:17,026 - INFO - Ensured folder exists: Plans
+2026-03-30 15:47:17,027 - INFO - Ensured folder exists: Pending_Approval
+2026-03-30 15:47:17,027 - INFO - Ensured folder exists: Logs
+2026-03-30 15:47:17,027 - INFO - Starting processing cycle
+2026-03-30 15:47:17,028 - INFO - Found 0 files in Needs_Action
+2026-03-30 15:47:17,028 - INFO - Completed processing cycle
+2026-03-30 15:52:15,900 - INFO - Ensured folder exists: Inbox
+2026-03-30 15:52:15,902 - INFO - Ensured folder exists: Needs_Action
+2026-03-30 15:52:15,903 - INFO - Ensured folder exists: Done
+2026-03-30 15:52:15,904 - INFO - Ensured folder exists: Plans
+2026-03-30 15:52:15,905 - INFO - Ensured folder exists: Pending_Approval
+2026-03-30 15:52:15,906 - INFO - Ensured folder exists: Logs
+2026-03-30 15:52:15,906 - INFO - Starting processing cycle
+2026-03-30 15:52:15,908 - INFO - Found 0 files in Needs_Action
+2026-03-30 15:52:15,908 - INFO - Completed processing cycle
+2026-03-30 16:04:49,614 - INFO - Ensured folder exists: Inbox
+2026-03-30 16:04:49,615 - INFO - Ensured folder exists: Needs_Action
+2026-03-30 16:04:49,616 - INFO - Ensured folder exists: Done
+2026-03-30 16:04:49,617 - INFO - Ensured folder exists: Plans
+2026-03-30 16:04:49,618 - INFO - Ensured folder exists: Pending_Approval
+2026-03-30 16:04:49,619 - INFO - Ensured folder exists: Logs
+2026-03-30 16:04:49,619 - INFO - Starting processing cycle
+2026-03-30 16:04:49,620 - INFO - Found 0 files in Needs_Action
+2026-03-30 16:04:49,620 - INFO - Completed processing cycle
+2026-03-30 16:06:42,024 - INFO - Ensured folder exists: Inbox
+2026-03-30 16:06:42,025 - INFO - Ensured folder exists: Needs_Action
+2026-03-30 16:06:42,026 - INFO - Ensured folder exists: Done
+2026-03-30 16:06:42,026 - INFO - Ensured folder exists: Plans
+2026-03-30 16:06:42,027 - INFO - Ensured folder exists: Pending_Approval
+2026-03-30 16:06:42,028 - INFO - Ensured folder exists: Logs
+2026-03-30 16:06:42,028 - INFO - Starting processing cycle
+2026-03-30 16:06:42,029 - INFO - Found 1 files in Needs_Action
+2026-03-30 16:06:42,030 - INFO - Processing: test_task.md
+2026-03-30 16:06:42,030 - INFO - File content preview: hello agent....
+2026-03-30 16:06:42,031 - INFO - Generic task in test_task.md
+2026-03-30 16:06:42,031 - INFO - Handling generic task from test_task.md
+2026-03-30 16:06:42,033 - INFO - Moved test_task.md to Done folder
+2026-03-30 16:06:42,035 - INFO - Dashboard updated
+2026-03-30 16:06:42,035 - INFO - Completed processing cycle
