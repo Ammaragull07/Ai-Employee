@@ -4,7 +4,6 @@ Never hardcode API keys here - always use environment variables!
 """
 
 import os
-from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
