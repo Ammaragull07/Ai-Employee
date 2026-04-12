@@ -1,54 +1,142 @@
-# AI Employee - Bronze Tier Implementation
+# AI Employee - Silver Tier Implementation
 
-This project implements the Bronze Tier requirements for the Personal AI Employee Hackathon.
+This project implements the Silver Tier requirements for the Personal AI Employee Hackathon. The AI Employee is designed to act as a digital full-time equivalent employee, operating 24/7 to manage personal and business affairs.
 
-## Features Implemented
+## Silver Tier Features
 
-1. **Obsidian Vault Structure**
-   - Dashboard.md - Main dashboard with status information
-   - Company_Handbook.md - Rules and guidelines for the AI Employee
-   - Basic folder structure: Inbox, Needs_Action, Done, Plans, Pending_Approval, Logs
+The Silver Tier includes all Bronze Tier features plus:
 
-2. **File System Watcher**
-   - Monitors a designated folder for new files
-   - Creates action files in Needs_Action when new files are detected
-   - Generates metadata for each detected file
+1. **Multiple Watcher Scripts**:
+   - Gmail Watcher (existing from Bronze)
+   - WhatsApp Watcher (new)
+   - LinkedIn Watcher (new)
+   - File System Watcher (existing from Bronze)
 
-3. **Orchestrator**
-   - Processes files in the Needs_Action folder
-   - Updates the Dashboard with current status
-   - Moves processed files to the Done folder
+2. **Automatic LinkedIn Posting**:
+   - Automatically generates and posts business updates to LinkedIn
+   - Implements approval workflow for social media posts
 
-4. **Agent Skills**
-   - Demonstrates AI functionality through command-line skills
-   - Shows how the AI reads from and writes to the vault
+3. **Claude Reasoning Loop**:
+   - Creates Plan.md files for multi-step tasks
+   - Implements sophisticated reasoning patterns
 
-## Setup Instructions
+4. **MCP Server Integration**:
+   - Email MCP server for sending emails
+   - Standardized interface for Claude Code to interact with external systems
 
-1. Install dependencies:
-   ```
+5. **Human-in-the-Loop Approval**:
+   - Approval workflow for sensitive actions
+   - File-based approval system (Pending_Approval, Approved, Rejected folders)
+
+6. **Scheduling**:
+   - Basic scheduling via cron-like functionality
+   - Daily and weekly briefing generation
+
+7. **Agent Skills**:
+   - All AI functionality implemented as reusable skills
+   - Enhanced SKILL.md with silver tier capabilities
+
+## Architecture
+
+The system follows the architecture outlined in the hackathon document:
+
+```
+┌─────────────────────────────────────────────────────────────────┐  
+│                    EXTERNAL SOURCES                           │  
+├─────────────────┬─────────────────┬─────────────────────────────┤  
+│     Gmail       │    WhatsApp     │     Bank APIs    │  Files   │  
+└────────┬────────┴────────┬────────┴─────────┬────────┴────┬─────┘  
+         │                 │                  │             │        
+         ▼                 ▼                  ▼             ▼        
+┌─────────────────────────────────────────────────────────────────┐  
+│                    PERCEPTION LAYER                             │  
+│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐             │  
+│  │ Gmail Watcher│ │WhatsApp Watch│ │Finance Watcher│            │  
+│  │  (Python)    │ │ (Playwright) │ │   (Python)   │            │  
+│  └──────┬───────┘ └──────┬───────┘ └──────┬───────┘            │  
+└─────────┼────────────────┼────────────────┼────────────────────┘  
+          │                │                │                        
+          ▼                ▼                ▼                        
+┌─────────────────────────────────────────────────────────────────┐  
+│                    OBSIDIAN VAULT (Local)                       │  
+│  ┌──────────────────────────────────────────────────────────┐  │  
+│  │ /Needs_Action/  │ /Plans/  │ /Done/  │ /Logs/            │  │  
+│  ├──────────────────────────────────────────────────────────┤  │  
+│  │ Dashboard.md    │ Company_Handbook.md │ Business_Goals.md│  │  
+│  ├──────────────────────────────────────────────────────────┤  │  
+│  │ /Pending_Approval/  │  /Approved/  │  /Rejected/         │  │  
+│  └──────────────────────────────────────────────────────────┘  │  
+└────────────────────────────────┬────────────────────────────────┘  
+                                 │                                   
+                                 ▼                                   
+┌─────────────────────────────────────────────────────────────────┐  
+│                    REASONING LAYER                              │  
+│  ┌───────────────────────────────────────────────────────────┐ │  
+│  │                      CLAUDE CODE                          │ │  
+│  │   Read → Think → Plan → Write → Request Approval          │ │  
+│  └───────────────────────────────────────────────────────────┘ │  
+└────────────────────────────────┬────────────────────────────────┘  
+                                 │                                   
+              ┌──────────────────┴───────────────────┐               
+              ▼                                      ▼               
+┌────────────────────────────┐    ┌────────────────────────────────┐  
+│    HUMAN-IN-THE-LOOP       │    │         ACTION LAYER           │  
+│  ┌──────────────────────┐  │    │  ┌─────────────────────────┐   │  
+│  │ Review Approval Files│──┼───▶│  │    MCP SERVERS          │   │  
+│  │ Move to /Approved    │  │    │  │  ┌──────┐ ┌──────────┐  │   │  
+│  └──────────────────────┘  │    │  │  │Email │ │ Browser  │  │   │  
+│                            │    │  │  │ MCP  │ │   MCP    │  │   │  
+└────────────────────────────┘    │  │  └──┬───┘ └────┬─────┘  │   │  
+                                  │  └─────┼──────────┼────────┘   │  
+                                  └────────┼──────────┼────────────┘  
+                                           │          │               
+                                           ▼          ▼               
+                                  ┌────────────────────────────────┐  
+                                  │     EXTERNAL ACTIONS           │  
+                                  │  Send Email │ Make Payment     │  
+                                  │  Post Social│ Update Calendar  │  
+                                  └────────────────────────────────┘
+```
+
+## Setup
+
+1. Install required packages:
+   ```bash
    pip install -r requirements.txt
    ```
 
-2. Create a drop folder for the file watcher:
-   ```
-   mkdir DropFolder
+2. Configure your vault directory with proper folder structure
+
+3. Set up your MCP servers as needed
+
+4. Run the orchestrator:
+   ```bash
+   python orchestrator.py --continuous
    ```
 
-3. Run the file system watcher:
-   ```
-   python filesystem_watcher.py
-   ```
+## Files and Directories
 
-4. Run the orchestrator to process actions:
-   ```
-   python orchestrator.py
-   ```
+- `SKILL.md`: Defines all available skills for the AI Employee
+- `orchestrator.py`: Main orchestrator that manages the workflow
+- `scheduler.py`: Handles scheduled tasks
+- `linkedin_watcher.py`: Monitors and posts to LinkedIn
+- `whatsapp_watcher.py`: Monitors WhatsApp messages
+- `email_mcp_server.py`: MCP server for email functionality
+- `Company_Handbook.md`: Rules and guidelines for the AI Employee
+- `Business_Goals.md`: Business objectives and metrics
+- `Dashboard.md`: Current status dashboard
 
-## Bronze Tier Requirements Met
+## Usage
 
-✅ Obsidian vault with Dashboard.md and Company_Handbook.md
-✅ One working Watcher script (File System Monitor)
-✅ Claude Code successfully reading from and writing to the vault
-✅ Basic folder structure: /Inbox, /Needs_Action, /Done
-✅ All AI functionality implemented as Agent Skills (demonstrated)
+The AI Employee operates automatically by monitoring the `/Needs_Action` folder for new tasks. When a task is detected, it processes the task according to the rules in `Company_Handbook.md`. For sensitive actions, it creates approval requests in the `/Pending_Approval` folder which must be moved to `/Approved` or `/Rejected` by a human operator.
+
+## Silver Tier Requirements Met
+
+✅ All Bronze requirements  
+✅ Two or more Watcher scripts (Gmail, WhatsApp, LinkedIn, File System)  
+✅ Automatic LinkedIn posting for business generation  
+✅ Claude reasoning loop that creates Plan.md files  
+✅ One working MCP server (Email MCP)  
+✅ Human-in-the-loop approval workflow  
+✅ Basic scheduling via cron/scheduler  
+✅ All AI functionality implemented as Agent Skills

@@ -1,1 +1,22 @@
+# AI Employee - Silver Tier Requirements
+
+# File system watching
 watchdog>=3.0.0
+
+# Task scheduling
+schedule>=1.2.0
+
+# HTTP requests (LinkedIn API, etc.)
+requests>=2.31.0
+
+# Browser automation (WhatsApp watcher)
+playwright>=1.40.0
+
+# Gmail API
+google-auth>=2.27.0
+google-auth-oauthlib>=1.2.0
+google-auth-httplib2>=0.2.0
+google-api-python-client>=2.120.0
+
+# Claude AI API
+anthropic>=0.25.0

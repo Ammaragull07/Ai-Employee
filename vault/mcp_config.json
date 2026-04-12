@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "name": "ai_employee_mcp_config",
+  "description": "Configuration for MCP servers used by the AI Employee",
+  "mcp_servers": [
+    {
+      "name": "email-mcp",
+      "type": "stdio",
+      "command": "python",
+      "args": ["email_mcp_server.py"],
+      "initialization_options": {}
+    }
+  ],
+  "connections": {
+    "email-mcp": {
+      "description": "Email MCP server for sending and managing emails"
+    }
+  }
+}
