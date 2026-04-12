@@ -6,6 +6,7 @@
 # Credentials and tokens
 credentials.json
 token.json
+api_config.py
 
 # Python
 __pycache__/

@@ -1,5 +1,8 @@
 # AI Employee - Silver Tier Requirements
 
+# Environment variables
+python-dotenv>=1.0.0
+
 # File system watching
 watchdog>=3.0.0
 

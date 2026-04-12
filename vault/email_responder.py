@@ -42,10 +42,10 @@ class EmailResponder:
 
         self._setup_logging()
 
-        # Claude API client (using API key from api_config.py)
+        # Claude API client (using API key from environment variables)
         if not ANTHROPIC_API_KEY or ANTHROPIC_API_KEY == "your_api_key_here":
-            self.logger.error("API key not configured in api_config.py")
-            raise ValueError("Please set ANTHROPIC_API_KEY in api_config.py")
+            self.logger.error("ANTHROPIC_API_KEY not configured in environment")
+            raise ValueError("Please set ANTHROPIC_API_KEY in your .env file or as an environment variable")
 
         self.client = Anthropic(api_key=ANTHROPIC_API_KEY)
         self.model = CLAUDE_MODEL
