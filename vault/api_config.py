@@ -6,9 +6,9 @@ Never hardcode API keys here - always use environment variables!
 import os
 
 # Load environment variables from .env file
-load_dotenv()
 
-# Get your API key from: https://console.anthropic.com/account/keys
+
+# Get your API key from: c.com/account/keyhttps://console.anthropis
 # Set ANTHROPIC_API_KEY in your .env file
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 
