@@ -135,6 +135,16 @@ class Orchestrator:
             return True
         try:
             msg = MIMEMultipart('alternative')
+
+            # Get sender's email from Gmail profile
+            try:
+                profile = service.users().getProfile(userId='me').execute()
+                sender_email = profile.get('emailAddress', 'me@gmail.com')
+            except Exception as e:
+                self.logger.warning(f"Could not get sender email: {e}")
+                sender_email = 'me@gmail.com'
+
+            msg['From'] = sender_email
             msg['To'] = to
             msg['Subject'] = subject
             if cc:

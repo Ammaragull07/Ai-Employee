@@ -178,6 +178,14 @@ Only return the response text, no subject line needed."""
                 self.logger.error(f"Could not extract email address from: {from_field}")
                 return False
 
+            # Get sender's email address from Gmail profile
+            try:
+                profile = self.gmail_service.users().getProfile(userId='me').execute()
+                sender_email = profile.get('emailAddress', 'me')
+            except Exception as e:
+                self.logger.warning(f"Could not get sender email from profile: {e}, using 'me'")
+                sender_email = 'me'
+
             # Create reply subject
             original_subject = email_data['subject']
             if not original_subject.startswith('Re:'):
@@ -185,8 +193,9 @@ Only return the response text, no subject line needed."""
             else:
                 reply_subject = original_subject
 
-            # Create message
+            # Create message with all required headers
             message = MIMEText(response_text)
+            message['from'] = sender_email
             message['to'] = recipient
             message['subject'] = reply_subject
 

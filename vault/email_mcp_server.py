@@ -94,10 +94,21 @@ def _send_via_gmail(to: str, subject: str, body: str,
 
     try:
         msg = MIMEMultipart('alternative')
+
+        # Get sender's email from Gmail profile
+        try:
+            profile = service.users().getProfile(userId='me').execute()
+            sender_email = profile.get('emailAddress', 'me@gmail.com')
+        except Exception:
+            sender_email = 'me@gmail.com'
+
+        msg['From'] = sender_email
         msg['To'] = to
         msg['Subject'] = subject
         if cc:
             msg['Cc'] = cc
+        if bcc:
+            msg['Bcc'] = bcc
         msg.attach(MIMEText(body, 'plain'))
 
         raw = base64.urlsafe_b64encode(msg.as_bytes()).decode()
